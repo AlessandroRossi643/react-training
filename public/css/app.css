@@ -3,3 +3,11 @@
   height: 100px;
 }
 
+.row {
+  margin: 20px 0;
+}
+
+.list-group-item {
+  margin: 0 5px;
+}
+

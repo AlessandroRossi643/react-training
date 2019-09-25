@@ -15,13 +15,17 @@
         <div class="col-lg-4"></div>
         <div class="col-lg-8"></div>
       </div>
+      <div class="row">
+        <div class="col-lg-12 likeit"></div>
+      </div>
     </div>
+
 
     <!-- First Script -->
     <script type="text/babel">
     var Presentazione = React.createClass({
     render: function() {
-      return <div className="jumbotron">
+      return <div className="jumbotron mb-0">
                 <h1 className="display-4">{this.props.user.fullName().toUpperCase()}</h1>
                 <p className="lead">{this.props.user.description}</p>
                 <hr className="my-4"></hr>
@@ -30,7 +34,6 @@
               </div>
     }
     });
-
     var userInfo = {
     firstName : 'Alessandro',
     lastName  : 'Rossi',
@@ -50,6 +53,7 @@
     ReactDOM.render(<Presentazione user={userInfo}/>, document.querySelector(".col-lg-12"));
     </script>
 
+
     <!-- Second Script -->
     <script type="text/babel">
       var FotoProfilo = React.createClass({
@@ -67,12 +71,14 @@
 
     <!-- Third Script -->
     <script type="text/babel">
-      var EsperienzaBoolean = React.createClass({
+      var EsperienzeLavorative = React.createClass({
         render : function(){
-          return <div className="media">
+          return <div className="container_esperienze">
+          <div className="media">
             <img src="https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/41198466_1837398186339724_7444703260696379392_n.png?_nc_cat=102&_nc_oc=AQm3Xss9kNNLsDcfwHdBJA_x7JwX-pJ4nMf1Vs8ehAgVsGGmYrWeRNK1wW5FM8B-97s&_nc_ht=scontent-mxp1-1.xx&oh=c17032a3b27be5ba4e910f0750f6ffdb&oe=5DF7998E" className="mr-3 img-thumbnail" alt="..."></img>
             <div className="media-body">
               <h5 className="mt-0">Boolean Careers</h5>
+              <h6 className="blockquote-footer"> Milano,2019 </h6>
               <p> Corso intensivo di sei mesi, di oltre 700 ore con cui ho consolidato le basi della programmazione sia lato back-end che lato front-end. </p>
               <ul>
                 <li> HTML 5 e CSS3 (SCSS), JAVASCRIPT, MySQL, PHP </li>
@@ -82,10 +88,45 @@
               </ul>
             </div>
           </div>
+
+          <div className="media mt-3">
+            <img src="https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/22489851_10154958210421299_4474504972352971576_n.jpg?_nc_cat=108&_nc_oc=AQk112UoKS1Ow_adtlmxsDNMVyokLStKLc_Mi8bM5nMgf7HIbZ6k71s341tKkHmi48E&_nc_ht=scontent-mxp1-1.xx&oh=a5f2a3c5a01bd9451ef7575f072912e3&oe=5DFD1031" className="mr-3 img-thumbnail" alt="..."></img>
+            <div className="media-body">
+              <h5 className="mt-0">Tratos HV</h5>
+              <h6 className="blockquote-footer"> Pieve Santo Stefano (AR), 2017-attuale </h6>
+              <p> Con lo scopo di finanziare il mio percorso formativo, ho cominciato a lavorare presso una multinazionale con sede principale collocata in provincia di Arezzo, specializzata nella produzione e la fornitura nel mercato di ogni genere e tipologia di cavi: dai cavi in fibra ottica, ai cavi per alta tensione, fino ai cavi per uso petrolchimico, e superconduttori. </p>
+            </div>
+          </div>
+        </div>
         }
       });
-      ReactDOM.render(<EsperienzaBoolean/>,document.querySelector(".col-lg-8"))
+      ReactDOM.render(<EsperienzeLavorative/>,document.querySelector(".col-lg-8"))
     </script>
+
+    <!-- Fourth Script -->
+    <script type="text/babel">
+    var StrenghtsButton = React.createClass({
+      getInitialState: function() {
+			return { liked: false };
+    },
+      render: function() {
+		    if (this.state.liked)
+			    return <ul className="list-group list-group-horizontal-lg my-2">
+            <li className="list-group-item list-group-item-primary">Motivation</li>
+            <li className="list-group-item list-group-item-success">Problem Solving</li>
+            <li className="list-group-item list-group-item-danger">Teamworking</li>
+            <li className="list-group-item list-group-item-warning">Understanding</li>
+          </ul>
+    		else
+    			return <a className="btn btn-primary text-white" role="button" onClick={this.doLike}>Scopri le mie qualità</a>
+    	},
+	    doLike: function() {
+		    this.setState({ liked: true });
+	    }
+      });
+      ReactDOM.render(<StrenghtsButton />, document.querySelector(".likeit"));
+    </script>
+
 
     <script src="https://fb.me/react-with-addons-0.14.0.js"></script>
     <script src="https://fb.me/react-dom-0.14.0.js"></script>
